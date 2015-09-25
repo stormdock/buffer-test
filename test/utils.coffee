@@ -1,4 +1,16 @@
+
 class Utils
+
+  @atob = (str) ->
+    new Buffer(str, 'base64').toString 'binary'
+
+  @btoa = (str) ->
+    if str instanceof Buffer
+      buffer = str
+    else
+      buffer = new Buffer(str.toString(), 'binary')
+    buffer.toString 'base64'
+
   # --- Mixins ---
   @extend = (obj, mixin, block) ->
     for own key, value of mixin
@@ -43,7 +55,7 @@ Utils.include String,
 
   # From base64 string to Uint8Array
   fromBase64: ->
-    new Uint8Array (atob @).toCodeArray()
+    new Uint8Array (@atob @).toCodeArray()
 
   # Trim line feed chars
   trimLines: ->
@@ -59,7 +71,7 @@ for C in [ Array , Uint8Array , Uint16Array ]
 
     # From array of char codes to base64 string
     toBase64: ->
-      btoa @fromCharCodes()
+      @btoa @fromCharCodes()
 
     xorWith: (a) ->
       return null unless @.length == a.length
