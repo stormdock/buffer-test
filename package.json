@@ -1,0 +1,14 @@
+{
+  "name": "buftest",
+  "version": "0.0.1",
+  "description": "hola",
+  "author": "mia",
+  "license": "ISC",
+  "devDependencies": {
+    "tape": "*",
+    "chai": "*"
+  },
+  "dependencies": {
+    "buffer": "*"
+  }
+}
