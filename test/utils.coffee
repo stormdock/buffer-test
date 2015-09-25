@@ -1,3 +1,4 @@
+Buffer = require('buffer/').Buffer
 
 class Utils
 
@@ -55,7 +56,7 @@ Utils.include String,
 
   # From base64 string to Uint8Array
   fromBase64: ->
-    new Uint8Array (@atob @).toCodeArray()
+    new Uint8Array (Utils.atob @).toCodeArray()
 
   # Trim line feed chars
   trimLines: ->
@@ -71,7 +72,7 @@ for C in [ Array , Uint8Array , Uint16Array ]
 
     # From array of char codes to base64 string
     toBase64: ->
-      @btoa @fromCharCodes()
+      Utils.btoa @fromCharCodes()
 
     xorWith: (a) ->
       return null unless @.length == a.length
