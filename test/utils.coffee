@@ -2,15 +2,13 @@ Buffer = require('buffer/').Buffer
 
 class Utils
 
-  @atob = (str) ->
-    new Buffer(str, 'base64').toString 'binary'
-
   @btoa = (str) ->
-    if str instanceof Buffer
-      buffer = str
-    else
-      buffer = new Buffer(str.toString(), 'binary')
-    buffer.toString 'base64'
+    buf = new Buffer(str, 'binary')
+    buf.toString 'base64'
+
+  @atob = (str) ->
+    buf = new Buffer(str, 'base64')
+    buf.toString 'utf8'
 
   # --- Mixins ---
   @extend = (obj, mixin, block) ->
