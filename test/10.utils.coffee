@@ -12,13 +12,16 @@ describe 'Utils functions', ->
     str2 = new Buffer(str1, 'base64').toString()
     console.log(str2)
 
-    # btoa
-
+    b64 = "SGVsbG8gV29ybGQ="
     strhw = "Hello World"
 
-    # atob
+    # btoa
+    bufhw = new Buffer(strhw, 'binary')
+    b64x = bufhw.toString 'base64'
+    b64x.should.equal(b64)
+    console.log(b64x)
 
-    b64 = "SGVsbG8gV29ybGQ="
+    # atob
     hw = new Buffer(b64, 'base64').toString()
     hw.should.equal(strhw)
     console.log(hw)
