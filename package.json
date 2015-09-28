@@ -9,6 +9,7 @@
     "chai": "*"
   },
   "dependencies": {
-    "buffer": "*"
+    "buffer": "*",
+    "deep-equal": "*"
   }
 }
